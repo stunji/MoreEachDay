@@ -3,6 +3,7 @@
 <html land="en">
 
 <head>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" >
@@ -12,45 +13,38 @@
 
 	<meta charset=utf-8>
 	<title>More Each Day</title>
+
 </head>
 
 <body class="bodycontent">
 	<div class="container">
 		<div class="row">
+		
 			<div class="col-md-6">
-				<div class="register-outsidebox" id="reg">
+				<div class="login-outsidebox" id="log">
 					<section>
-						<h1 class="title">Register: </h1>
+						<h1 class="title">Log In:</h1>
 						<br>
-						<form action="Register" method="POST">			
+						<form action="Login" method="POST">		
 							<div class="name-input">
 								<input type="text" name="username" placeholder="Username" class="username" value="" required />
 							</div>
 							<br>
 							<br>
-							<div class = "pass-input">
-								<input type="text" name="email" placeholder="Email" class="password" value="" required=""/>
-							</div>
-							<br>
-							<br>
 							<div class="pass-input">
-								<input id="pass1" type="password" name="password" placeholder="Password" class="password" required />
-							</div>
-							<br>
-							<br>
-							<div class="pass-input">
-								<input id="pass2" onkeyup="checkPass(); return false;"
-								type="password" name="pass-rep" placeholder="Repeat Password" class="password" required />
+								<input type="password" name="password" placeholder="Password" class="password" value="" required />
 							</div>
 							<br>
 							<br>
 							<div class="blue-button-box">
-								<button class="blue-button">Register</button>
-							</div>	
+								<button type="submit" class="blue-button">Log In</button>
+							</div>
 						</form>
-<!-- 						<div class="red-button-box">
-							<button class="red-button" id="show-log">Log In</button>
-						</div>  -->
+						<br>
+						<div class="red-button-box">
+							<button onclick="window.location.href='/MoreEachDay/register.jsp'" class="red-button" id="show">Register</button>
+						</div>
+
 					</section>
 				</div>
 			</div>

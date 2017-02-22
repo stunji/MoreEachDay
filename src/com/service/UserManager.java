@@ -8,12 +8,38 @@ import org.hibernate.query.Query;
 import com.hibernate.HibernateUtil;
 import com.model.User;
 
-public class UserRegister {
+public class UserManager {
+
+	public static boolean canLogin(String username, String password) {
+		
+		
+
+		Session session = HibernateUtil.openSession();
+		boolean result = false;
+
+		Transaction t = null;
+
+		try {
+			t = session.beginTransaction();
+			Query query = session
+					.createQuery("from User where username='" + username + "' and password='" + password + "'");
+			Object u = (Object) query.uniqueResult();
+			t.commit();
+
+			if (u != null) {
+				result = true;
+			}
+		} catch (Exception e) {
+			if (t != null) {
+				t.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return result;
+	}
 
 	public static boolean addUser(String username, String email, String password) {
-		
-		System.err.println("asjlDADJASKLFJADSKLFJSDKLFJASDFKLASDJFKLSDFJSDKLFJSDKLFJ");
-		System.out.println(username);
 
 		Session session = HibernateUtil.openSession();
 		if (userExists(username, email) || !validateEmail(email)) {
@@ -31,7 +57,6 @@ public class UserRegister {
 			if (t != null) {
 				t.rollback();
 			}
-			System.out.println(e.getMessage());
 			e.printStackTrace();
 		} finally {
 			session.close();
